@@ -1,0 +1,119 @@
+@import 'reset';
+
+//------------- VARIABLES ---------------
+$tfuente: 'Fira Sans', sans-serif;
+$cfuente:  #f7f4f4;
+$blanco: #f7f4f4;
+$negro: #0B0C10;
+$griso:#15171f;
+$grisc:#2a2e3d;
+$gris: #C5C6C7;
+$resaltado:#66FCF1;
+$sombra: #ccc;
+$border: 0.3rem;
+
+//------------- GENERALES ---------------
+
+body {
+	color: $cfuente;
+	font-family: $tfuente;
+}
+
+h1 {
+	color: $resaltado;
+	font-size: 2.4rem;
+	text-transform: uppercase;
+}
+
+h2 {
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+}
+
+p{
+	font-size: 0.9rem;
+	line-height: 2rem;
+}
+
+//------------- MIXINS ---------------
+
+@mixin flexbox($jc:center, $ai:center, $fd:column) {
+	justify-content: $jc;
+	align-items: $ai;
+	flex-direction: $fd;
+}
+
+@mixin section($bg:white, $h:100vh, $w:100vw, $p:5rem) {
+    @include flexbox();
+	background: $bg;
+	min-height: $h;
+	max-width: $w;
+  }
+
+@mixin button {
+
+	height: 2.25rem;
+	color: $resaltado;
+	background-color: $negro;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	font-weight: bold;
+	padding: 1rem 1rem;
+	cursor: pointer;
+	border-radius: 30rem;
+	
+}
+
+@mixin bcolor ($bcolor: true) {
+    @if $bcolor == true{
+	   background-color:$resaltado;
+	   color: $griso;        
+    }
+}
+
+
+//------------- INTERPOLACIÓN VAR ---------------
+
+  %sombra {
+	box-shadow: 0px 2px 5px 0px $sombra;
+}
+
+
+//-------- MEDIAQUERIES --------
+$tablet    : 768px;
+$desktop   : 1024px;
+
+//-------- MIXINS MEDIA QUERIES --------
+@mixin phone {
+	@media (max-width: #{$tablet - 1px}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop}) {
+		@content;
+	}
+}
+
+@mixin devices {
+	@media (max-width: #{$desktop - 1px}) {
+		@content;
+	}
+}
+
+@mixin none {
+	@media (max-width: #{361px}) {
+		@content;
+	}
+}
+
+
+
